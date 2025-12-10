@@ -704,3 +704,12 @@ body {
 .gm-video-wrap video {
   background-color: #F7F7F5;
 }
+
+
+
+/* iOS のタップ時の黒いハイライトを消す */
+a,
+button,
+.jl-item img {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
