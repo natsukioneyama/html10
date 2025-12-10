@@ -100,6 +100,7 @@ body.header-open .header-panel {
 }
 
 
+
 .brand .artist,
 .brand .role {
   margin: 0;
@@ -257,7 +258,7 @@ margin: 0 auto;
 .col-2 .jl-item img { width: 74px; }
 .col-3 .jl-item img { width: 72px; }
 .col-4 .jl-item img { width: 81px; }
-.col-5 .jl-item img { width: 79px; }
+.col-5 .jl-item img { width: 65px; }
 .col-6 .jl-item img { width: 67px; }
 .col-7 .jl-item img { width: 72px; }
 
@@ -291,10 +292,6 @@ margin: 0 auto;
 
 /* ============ LIGHTBOX ============ */
 
-.gm[aria-hidden="true"] {
-  display: none;
-}
-
 .gm {
   position: fixed;
   inset: 0;
@@ -306,12 +303,25 @@ margin: 0 auto;
 
   /* ★ 背景をサイトと同じ色にしておく */
   background: #F7F7F5;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @media (max-width: 767px) {
   .gm {
     --gm-footer-h: 140px;
   }
+}
+
+/* aria-hidden="false" のときだけ表示する */
+.gm[aria-hidden="false"] {
+opacity: 1;
+visibility: visible;
+pointer-events: auto;
 }
 
 .gm-backdrop {
@@ -349,6 +359,8 @@ margin: 0 auto;
   /* ★ 読み込み中に見える下地もクリーム色に */
   background-color: #F7F7F5;
 }
+.gm-img { opacity: 0; transition: opacity 0.2s ease; }
+.gm-img.ready { opacity: 1; }
 
 /* caption & text */
 .gm-caption {
