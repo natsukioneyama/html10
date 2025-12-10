@@ -13,9 +13,8 @@ body {
 
 :root {
   --bar-h: 44px;
-    /* 375px（iPhone SE 幅）をベースにして、
-     画面がそれより狭いときだけ全体を縮小する係数 */
-  --thumbs-scale: min(1, 100vw / 375);
+  /* 440px をベース幅として、画面が狭いときだけ縮小する係数 */
+  --thumbs-scale: min(1, 100vw / 440);
 }
 
 /* ベース */
@@ -175,13 +174,8 @@ body.gm-open .topbar {
 display: flex;
 flex-direction: column;
 gap: 4px;
-/* デザインの元サイズ（iPhone SE 幅を基準） */
-width: 375px;
 /* 中央寄せ */
 margin: 0 auto;
-  /* 画面が 375px より狭いときだけ全体を縮小する */
-transform: scale(var(--thumbs-scale));
-transform-origin: top center;
 }
 
 
