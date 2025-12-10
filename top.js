@@ -1,10 +1,20 @@
 // top.js
+  // top.js の先頭あたり
 document.addEventListener('DOMContentLoaded', () => {
-    // ★ タッチ端末なら body にクラスを付与
-  const isTouch = window.matchMedia('(pointer: coarse)').matches;
-  if (isTouch) {
-    document.body.classList.add('is-touch');
+  const root = document.documentElement;
+
+  // タッチ端末かどうかをかなり広めに判定
+  const hasTouch =
+    ('ontouchstart' in window) ||
+    (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
+    window.matchMedia('(pointer: coarse)').matches;
+
+  if (hasTouch) {
+    root.classList.add('is-touch');
+  } else {
+    root.classList.add('is-desktop');
   }
+
   /* ===== HEADER OPEN トグル ===== */
   const brandBtn = document.querySelector('.js-header-toggle');
   if (brandBtn) {
