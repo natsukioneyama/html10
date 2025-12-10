@@ -13,8 +13,9 @@ body {
 
 :root {
   --bar-h: 44px;
-  /* 440px をベース幅として、画面が狭いときだけ縮小する係数 */
-  --thumbs-scale: min(1, 100vw / 440);
+    /* 375px（iPhone SE 幅）をベースにして、
+     画面がそれより狭いときだけ全体を縮小する係数 */
+  --thumbs-scale: min(1, 100vw / 375);
 }
 
 /* ベース */
@@ -174,11 +175,11 @@ body.gm-open .topbar {
 display: flex;
 flex-direction: column;
 gap: 4px;
-/* デザインの元サイズ（スクショの iPhone Pro Max を基準） */
-width: 440px;
+/* デザインの元サイズ（iPhone SE 幅を基準） */
+width: 375px;
 /* 中央寄せ */
 margin: 0 auto;
-/* 画面が 440px より狭いときだけ全体を縮小する */
+  /* 画面が 375px より狭いときだけ全体を縮小する */
 transform: scale(var(--thumbs-scale));
 transform-origin: top center;
 }
@@ -209,11 +210,11 @@ transform-origin: top center;
 
 
 /* 列ごとの基本幅（スマホ） */
-.col-1 .jl-item img { width: 86px; }
-.col-2 .jl-item img { width: 74px; }
-.col-3 .jl-item img { width: 72px; }
-.col-4 .jl-item img { width: 81px; }
-.col-5 .jl-item img { width: 65px; }
+.col-1 .jl-item img { width: 70px; }
+.col-2 .jl-item img { width: 60px; }
+.col-3 .jl-item img { width: 57px; }
+.col-4 .jl-item img { width: 66px; }
+.col-5 .jl-item img { width: 50px; }
 
 
 .col-2 { margin-top: 6px; }
@@ -231,7 +232,7 @@ transform-origin: top center;
 
 /* ★ 横イメージだけ少し大きくする（列指定を上書き） */
 .jl-item.landscape img {
-  width: 140px;   /* お好みで 110〜140 くらい */
+  width: 100px;   /* お好みで 110〜140 くらい */
 }
 
 
