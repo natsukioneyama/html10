@@ -9,6 +9,7 @@ html,
 body {
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent; 
 }
 
 :root {
@@ -406,34 +407,97 @@ margin: 0 auto;
 
 /* ========================================
    Desktop（PCブラウザ専用）
-   例：幅 1800px 以上で PC レイアウトを適用
    ======================================== */
-@media (min-width: 1800px) {
 
-  /* PC は is-touch を付けずにそのまま書く */
-  .page {
+/* 1) 狭め PC（575px〜1023px） */
+@media (min-width: 573px) and (max-width: 1023px) and (pointer: fine) {
+  .is-desktop .page {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* 横中央寄せ */
   }
 
-  .thumbs {
-    margin: 60px auto 0;
-    max-width: 1600px; /* 必要ならPCの最大幅を設定 */
+  .is-desktop .thumbs {
+    margin: 0 auto; /* 中央配置 */
   }
 
-  /* PC 用のサムネサイズ */
-  .col-1 .jl-item img { width: 160px; }
-  .col-2 .jl-item img { width: 150px; }
-  .col-3 .jl-item img { width: 150px; }
-  .col-4 .jl-item img { width: 140px; }
-  .col-5 .jl-item img { width: 140px; }
+  .is-desktop .col-1 .jl-item img { width: 90px; }
+  .is-desktop .col-2 .jl-item img { width: 80px; }
+  .is-desktop .col-3 .jl-item img { width: 80px; }
+  .is-desktop .col-4 .jl-item img { width: 70px; }
+  .is-desktop .col-5 .jl-item img { width: 70px; }
 
-  .jl-item.landscape img {
-    width: 260px;
+  .is-desktop .jl-item.landscape img {
+    width: 120px;
   }
+
+  .is-desktop .page {
+   display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 縦方向中央 */
+    align-items: center;       /* 横方向中央 */
+    min-height: 100vh;
+}
 }
 
+/* 2) ふつう PC（1024px〜1299px） */
+@media (min-width: 1024px) and (max-width: 1299px) and (pointer: fine) {
+   .is-desktop .page {
+    display: flex;
+    justify-content: center; /* 横中央寄せ */
+  }
 
+  .is-desktop .thumbs {
+    margin: 0 auto; /* 中央配置 */
+  }
+
+  .is-desktop .col-1 .jl-item img { width: 90px; }
+  .is-desktop .col-2 .jl-item img { width: 80px; }
+  .is-desktop .col-3 .jl-item img { width: 80px; }
+  .is-desktop .col-4 .jl-item img { width: 70px; }
+  .is-desktop .col-5 .jl-item img { width: 70px; }
+
+  .is-desktop .jl-item.landscape img {
+    width: 120px;
+  }
+
+  .is-desktop .page {
+   display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 縦方向中央 */
+    align-items: center;       /* 横方向中央 */
+    min-height: 100vh;
+}
+}
+
+/* 4) 大画面 PC（1600px〜） */
+@media (min-width: 1600px) and (pointer: fine) {
+   .is-desktop .page {
+    display: flex;
+    justify-content: center; /* 横中央寄せ */
+  }
+
+  .is-desktop .thumbs {
+    margin: 0 auto; /* 中央配置 */
+  }
+
+  .is-desktop .col-1 .jl-item img { width: 90px; }
+  .is-desktop .col-2 .jl-item img { width: 80px; }
+  .is-desktop .col-3 .jl-item img { width: 80px; }
+  .is-desktop .col-4 .jl-item img { width: 70px; }
+  .is-desktop .col-5 .jl-item img { width: 70px; }
+
+  .is-desktop .jl-item.landscape img {
+    width: 120px;
+  }
+
+  .is-desktop .page {
+   display: flex;
+    flex-direction: column;
+    justify-content: center;   /* 縦方向中央 */
+    align-items: center;       /* 横方向中央 */
+    min-height: 100vh;
+}
+}
 
 
 
@@ -560,17 +624,44 @@ pointer-events: auto;
 
 /* close button */
 .gm-close {
-  position: absolute;
+  position: absolute;        /* 今までと同じ位置指定で OK（必要に応じて absolute → fixed に） */
   right: 10px;
   bottom: 10px;
-  border: 0;
+
+  font-size: .6rem;        /* 文字サイズは小さいまま */
+  letter-spacing: 0.08em;
+  font-family: inherit;
+
   background: transparent;
-  color: #111;
-  font-size: 0.6rem;
-  font-weight: 100;
-  letter-spacing: 0.04em;
+  border: none;
+
+  /* ★ ここで“透明なヒットエリア”を広げる */
+  padding: 0;     /* 上下左右に余白を付ける → ここ全体がクリック領域 */
   cursor: pointer;
-  z-index: 20;
+  pointer-events: auto;
+
+
+  /* 見た目上はテキストだけに見えるように */
+  color: #111;
+  z-index: 30;
+}
+/* 透明の大きいクリック領域をつくる */
+.gm-close::before {
+  content: "";
+  position: absolute;
+  top: -20px;   /* テキストの上方向に20px拡張 */
+  bottom: -20px;/* 下方向にも20px拡張 → bottom:10px は維持される */
+  left: -25px;
+  right: -25px;
+  pointer-events: auto;     /* ← これで透明の領域も押せる */
+  /* ← この外側のボックスが実際のクリック領域 */
+}
+
+/* iPhone などでもガイドラインに近い 44px 以上を確保したい場合 */
+@media (max-width: 480px) {
+  .gm-close {
+    padding: 20px 32px;   /* スマホ時はさらにヒットエリア広め */
+  }
 }
 
 /* click zones */
@@ -594,4 +685,22 @@ body.gm-open {
   overflow: hidden;
   touch-action: none;
   overscroll-behavior: contain;
+}
+
+
+/* ===== iOS の黒チラつき・タップハイライト対策 ===== */
+html,
+body {
+  background: #F7F7F5;
+  -webkit-tap-highlight-color: transparent; /* タップ時の黒/グレーのフラッシュを消す */
+}
+
+/* Lightbox まわりは全部 同じ背景色で塗りつぶす */
+.gm,
+.gm-backdrop,
+.gm-frame,
+.gm-video-wrap,
+.gm-img,
+.gm-video-wrap video {
+  background-color: #F7F7F5;
 }
