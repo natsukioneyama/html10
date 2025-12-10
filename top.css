@@ -178,13 +178,6 @@ gap: 4px;
 margin: 0 auto;
 }
 
-
-
-
-
-
-
-
 .row {
   display: flex;
   flex-direction: column;
@@ -203,45 +196,6 @@ margin: 0 auto;
 }
 
 
-/* ベース（PC/スマホ共通・SE 相当） */
-.col-1 .jl-item img { width: 70px; }
-.col-2 .jl-item img { width: 60px; }
-.col-3 .jl-item img { width: 57px; }
-.col-4 .jl-item img { width: 66px; }
-.col-5 .jl-item img { width: 50px; }
-
-/* 普通サイズ iPhone（390〜414px） */
-@media (min-width: 376px) and (max-width: 414px) {
-  .is-touch .col-1 .jl-item img { width: 74px; }
-  .is-touch .col-2 .jl-item img { width: 65px; }
-  .is-touch .col-3 .jl-item img { width: 60px; }
-  .is-touch .col-4 .jl-item img { width: 71px; }
-  .is-touch .col-5 .jl-item img { width: 54px; }
-}
-
-/* Plus / Pro Max（415〜460px） */
-@media (min-width: 415px) and (max-width: 460px) {
-  .is-touch .col-1 .jl-item img { width: 81px; }
-  .is-touch .col-2 .jl-item img { width: 71px; }
-  .is-touch .col-3 .jl-item img { width: 67px; }
-  .is-touch .col-4 .jl-item img { width: 77px; }
-  .is-touch .col-5 .jl-item img { width: 59px; }
-}
-
-/* iPad mini 縦（744〜820px） */
-@media (min-width: 744px) and (max-width: 820px) {
-  .is-touch .col-1 .jl-item img { width: 105px; }
-  .is-touch .col-2 .jl-item img { width: 90px; }
-  .is-touch .col-3 .jl-item img { width: 86px; }
-  .is-touch .col-4 .jl-item img { width: 98px; }
-  .is-touch .col-5 .jl-item img { width: 75px; }
-}
-
-
-
-
-
-
 .col-2 { margin-top: 6px; }
 .col-3 { margin-top: 6px; }
 .col-4 { margin-top: 6px; }
@@ -255,14 +209,229 @@ margin: 0 auto;
   width: auto;
 }
 
+
+
+/* ベース（〜375px, SE相当） */
+.col-1 .jl-item img { width: 70px; }
+.col-2 .jl-item img { width: 60px; }
+.col-3 .jl-item img { width: 57px; }
+.col-4 .jl-item img { width: 66px; }
+.col-5 .jl-item img { width: 50px; }
 /* ★ 横イメージだけ少し大きくする（列指定を上書き） */
 .jl-item.landscape img {
   width: 100px;  
 }
 
+/* 普通 iPhone（390〜414px） */
+@media (min-width: 376px) and (max-width: 414px) {
+  .is-touch .col-1 .jl-item img { width: 74px; }
+  .is-touch .col-2 .jl-item img { width: 65px; }
+  .is-touch .col-3 .jl-item img { width: 60px; }
+  .is-touch .col-4 .jl-item img { width: 71px; }
+  .is-touch .col-5 .jl-item img { width: 54px; }
+  .is-touch .jl-item.landscape img {
+  width: 104px;  
+}
+}
+
+/* Plus / Pro Max（415〜460px） */
+@media (min-width: 415px) and (max-width: 460px) {
+  .is-touch .col-1 .jl-item img { width: 81px; }
+  .is-touch .col-2 .jl-item img { width: 71px; }
+  .is-touch .col-3 .jl-item img { width: 67px; }
+  .is-touch .col-4 .jl-item img { width: 77px; }
+  .is-touch .col-5 .jl-item img { width: 59px; }
+  .is-touch .jl-item.landscape img {
+  width: 110px;  
+}
+}
+
+/* 普通 iPhone（390〜414px） */
+@media (min-width: 376px) and (max-width: 414px) and (orientation: portrait) { 
+   .is-touch .page {
+    display: flex;
+    justify-content: center;
+  }
+  .is-touch .thumbs {
+    margin: 20px auto 0;
+  }
+}
+
+/* Plus / Pro Max（415〜460px） */
+@media (min-width: 415px) and (max-width: 460px) and (orientation: portrait) { 
+   .is-touch .page {
+    display: flex;
+    justify-content: center;
+  }
+  .is-touch .thumbs {
+    margin: 20px auto 0;
+  }
+}
+
+/* ★ここにスマホ横 MQ を追加 */
+@media (max-width: 956px) and (orientation: landscape) {
+  .is-touch .page {
+    display: flex;
+    justify-content: center;
+  }
+  .is-touch .thumbs {
+    margin: 20px auto 0;
+  }
+}
+
+/* ========================================
+   iPad mini（縦・744px〜820px あたり）
+   ======================================== */
+@media (min-width: 742px) and (max-width: 818px) and (orientation: portrait) {
+
+ .is-touch .col-1 .jl-item img { width: 130px; }
+ .is-touch .col-2 .jl-item img { width: 120px; }
+ .is-touch .col-3 .jl-item img { width: 114px; }
+ .is-touch .col-4 .jl-item img { width: 139px; }
+ .is-touch .col-5 .jl-item img { width: 110px; }
+
+ .is-touch .jl-item.landscape img {
+  width: 180px;  
+}
+}
+
+/* ========================================
+   iPad 11（縦・819px〜1180px あたり）
+   ======================================== */
+@media (min-width: 819px) and (max-width: 1022px) and (orientation: portrait) {
+  .is-touch .col-1 .jl-item img { width: 150px; }
+  .is-touch .col-2 .jl-item img { width: 140px; }
+  .is-touch .col-3 .jl-item img { width: 130px; }
+  .is-touch .col-4 .jl-item img { width: 139px; }
+  .is-touch .col-5 .jl-item img { width: 120px; }
+
+  .is-touch .jl-item.landscape img {
+  width: 200px;  
+}
+}
+
+/* ========================================
+   iPad 13（縦・819px〜1180px あたり）
+   ======================================== */
+@media (min-width: 1023px) and (max-width: 1366px) and (orientation: portrait) {
+  .is-touch .col-1 .jl-item img { width: 180px; }
+  .is-touch .col-2 .jl-item img { width: 160px; }
+  .is-touch .col-3 .jl-item img { width: 160px; }
+  .is-touch .col-4 .jl-item img { width: 160px; }
+  .is-touch .col-5 .jl-item img { width: 140px; }
+
+  .is-touch .jl-item.landscape img {
+  width: 250px;  
+}
+}
 
 
+/* ========================================
+   iPad mini（ランドスケープ）
+   ======================================== */
+@media (min-width: 1132px) and (max-width: 1178px) and (orientation: landscape) {
 
+    /* ここを追加：メイン領域をフレックスで横中央寄せ */
+  .is-touch .page {
+    display: flex;
+    justify-content: center;  /* 子要素を水平方向に中央寄せ */
+  }
+
+  /* .thumbs は“塊”として中央に置きたいだけなので margin は 0 でOK */
+  .is-touch .thumbs {
+    margin: 40px auto 0;      /* 上に少し余白＋左右中央 */
+  }
+  .is-touch .col-1 .jl-item img { width: 90px; }
+  .is-touch .col-2 .jl-item img { width: 80px; }
+  .is-touch .col-3 .jl-item img { width: 80px; }
+  .is-touch .col-4 .jl-item img { width: 70px; }
+  .is-touch .col-5 .jl-item img { width: 70px; }
+
+  .is-touch .jl-item.landscape img {
+  width: 150px;  
+}
+}
+
+/* ========================================
+   iPad 11（ランドスケープ）
+   ======================================== */
+@media (min-width: 1179px) and (max-width: 1364px) and (orientation: landscape) {
+
+    /* ここを追加：メイン領域をフレックスで横中央寄せ */
+  .is-touch .page {
+    display: flex;
+    justify-content: center;  /* 子要素を水平方向に中央寄せ */
+  }
+
+  /* .thumbs は“塊”として中央に置きたいだけなので margin は 0 でOK */
+  .is-touch .thumbs {
+    margin: 40px auto 0;      /* 上に少し余白＋左右中央 */
+  }
+  .is-touch .col-1 .jl-item img { width: 100px; }
+  .is-touch .col-2 .jl-item img { width: 90px; }
+  .is-touch .col-3 .jl-item img { width: 90px; }
+  .is-touch .col-4 .jl-item img { width: 80px; }
+  .is-touch .col-5 .jl-item img { width: 80px; }
+
+  .is-touch .jl-item.landscape img {
+  width: 160px;  
+}
+}
+
+/* ========================================
+   iPad 13（ランドスケープ）
+   ======================================== */
+@media (min-width: 1365px) and (max-width: 1800px) and (orientation: landscape) {
+
+    /* ここを追加：メイン領域をフレックスで横中央寄せ */
+  .is-touch .page {
+    display: flex;
+    justify-content: center;  /* 子要素を水平方向に中央寄せ */
+  }
+
+  /* .thumbs は“塊”として中央に置きたいだけなので margin は 0 でOK */
+  .is-touch .thumbs {
+    margin: 40px auto 0;      /* 上に少し余白＋左右中央 */
+  }
+  .is-touch .col-1 .jl-item img { width: 120px; }
+  .is-touch .col-2 .jl-item img { width: 110px; }
+  .is-touch .col-3 .jl-item img { width: 110px; }
+  .is-touch .col-4 .jl-item img { width: 100px; }
+  .is-touch .col-5 .jl-item img { width: 100px; }
+
+  .is-touch .jl-item.landscape img {
+  width: 200px;  
+}
+}
+
+/* ========================================
+   Desktop（PCブラウザ専用）
+   例：幅 1800px 以上で PC レイアウトを適用
+   ======================================== */
+@media (min-width: 1800px) {
+
+  /* PC は is-touch を付けずにそのまま書く */
+  .page {
+    display: flex;
+    justify-content: center;
+  }
+
+  .thumbs {
+    margin: 60px auto 0;
+    max-width: 1600px; /* 必要ならPCの最大幅を設定 */
+  }
+
+  /* PC 用のサムネサイズ */
+  .col-1 .jl-item img { width: 160px; }
+  .col-2 .jl-item img { width: 150px; }
+  .col-3 .jl-item img { width: 150px; }
+  .col-4 .jl-item img { width: 140px; }
+  .col-5 .jl-item img { width: 140px; }
+
+  .jl-item.landscape img {
+    width: 260px;
+  }
+}
 
 
 
