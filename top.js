@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchStartY = 0;
   let isTouching  = false;
 
+  const isIPhone = /iPhone|iPod/.test(navigator.userAgent || '');
+
   // ★ プリロード用キャッシュ（同じ画像を何度も読み込まないように）
   const preloadCache = new Map();
 
@@ -217,9 +219,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 前後ボタン
-  if (btnPrev) btnPrev.addEventListener('click', () => showNext(-1));
-  if (btnNext) btnNext.addEventListener('click', () => showNext(1));
+  // 前後ボタン（iPhone ではタップで次へ・前へを無効化）
+if (btnPrev && !isIPhone) {
+  btnPrev.addEventListener('click', () => showNext(-1));
+}
+if (btnNext && !isIPhone) {
+  btnNext.addEventListener('click', () => showNext(1));
+}
 
   // ★★ iPhone / タッチ端末用：スワイプで前後 ★★
   gm.addEventListener('touchstart', (e) => {
