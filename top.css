@@ -119,14 +119,20 @@ body.header-open .header-panel {
 
 /* 右側 CONTACT */
 .toplinks {
-  margin-left: auto;
+margin-left: auto;
+display: flex; 
+align-items: center; 
+gap: 10px;
 }
 
 .toplinks a {
-  font-size: 0.6rem;
-  color: inherit;
-  text-decoration: none;
-  letter-spacing: 0.06em;
+display: inline-block; 
+font-size: 0.6rem;
+line-height: 1;
+font-weight: 100; 
+letter-spacing: 0.06em;
+color: inherit;
+text-decoration: none;
 }
 
 .toplinks a:hover {
@@ -174,21 +180,15 @@ body.gm-open .topbar {
 .thumbs {
 display: flex;
 flex-direction: column;
-gap: 4px;
+gap: 8px;
 /* 中央寄せ */
-margin: 0 auto;
-}
-
-.row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+margin: 40px auto;
 }
 
 .col {
   display: flex;
   flex-direction: row;      /* 各ブロック内は横並び */
-  gap: 4px;
+  gap: 6px;
   flex-wrap: nowrap;
 }
 
@@ -212,292 +212,151 @@ margin: 0 auto;
 
 
 
-/* ベース（〜375px, SE相当） */
-.col-1 .jl-item img { width: 70px; }
-.col-2 .jl-item img { width: 60px; }
+/* ========================================
+ベース（〜375px, SE相当） 
+======================================== */
+.col-1 .jl-item img { width: 55px; }
+.col-2 .jl-item img { width: 46px; }
 .col-3 .jl-item img { width: 57px; }
-.col-4 .jl-item img { width: 66px; }
+.col-4 .jl-item img { width: 56px; }
 .col-5 .jl-item img { width: 50px; }
 /* ★ 横イメージだけ少し大きくする（列指定を上書き） */
 .jl-item.landscape img {
   width: 100px;  
 }
 
-/* 普通 iPhone（390〜414px） */
-@media (min-width: 376px) and (max-width: 414px) {
-  .is-touch .col-1 .jl-item img { width: 74px; }
-  .is-touch .col-2 .jl-item img { width: 65px; }
+
+
+
+/* ========================================
+iphone / Pro (390〜414px) portrait 
+======================================== */
+@media (min-width: 390px) and (max-width: 414px) and (orientation: portrait) {
+  .is-touch .col-1 .jl-item img { width: 58px; }
+  .is-touch .col-2 .jl-item img { width: 49px; }
   .is-touch .col-3 .jl-item img { width: 60px; }
-  .is-touch .col-4 .jl-item img { width: 71px; }
-  .is-touch .col-5 .jl-item img { width: 54px; }
-  .is-touch .jl-item.landscape img {
-  width: 104px;  
+  .is-touch .col-4 .jl-item img { width: 59px; }
+  .is-touch .col-5 .jl-item img { width: 52px; }
+  .is-touch .jl-item.landscape img { width: 103px; }
 }
-}
+
 
 /* Plus / Pro Max（415〜460px） */
-@media (min-width: 415px) and (max-width: 460px) {
-  .is-touch .col-1 .jl-item img { width: 81px; }
-  .is-touch .col-2 .jl-item img { width: 71px; }
-  .is-touch .col-3 .jl-item img { width: 67px; }
-  .is-touch .col-4 .jl-item img { width: 77px; }
-  .is-touch .col-5 .jl-item img { width: 59px; }
-  .is-touch .jl-item.landscape img {
-  width: 110px;  
-}
-}
-
-/* 普通 iPhone（390〜414px） */
-@media (min-width: 376px) and (max-width: 414px) and (orientation: portrait) { 
-   .is-touch .page {
-    display: flex;
-    justify-content: center;
-  }
-  .is-touch .thumbs {
-    margin: 20px auto 0;
-  }
-}
-
-/* Plus / Pro Max（415〜460px） */
-@media (min-width: 415px) and (max-width: 460px) and (orientation: portrait) { 
-   .is-touch .page {
-    display: flex;
-    justify-content: center;
-  }
-  .is-touch .thumbs {
-    margin: 20px auto 0;
-  }
-}
-
-/* ★ここにスマホ横 MQ を追加 */
-@media (max-width: 956px) and (orientation: landscape) {
-  .is-touch .page {
-    display: flex;
-    justify-content: center;
-  }
-  .is-touch .thumbs {
-    margin: 20px auto 0;
-  }
-}
-
-/* ========================================
-   iPad mini（縦・744px〜820px あたり）
-   ======================================== */
-@media (min-width: 742px) and (max-width: 818px) and (orientation: portrait) {
-
- .is-touch .col-1 .jl-item img { width: 130px; }
- .is-touch .col-2 .jl-item img { width: 120px; }
- .is-touch .col-3 .jl-item img { width: 114px; }
- .is-touch .col-4 .jl-item img { width: 139px; }
- .is-touch .col-5 .jl-item img { width: 110px; }
-
+@media (min-width: 415px) and (max-width: 460px)and (orientation: portrait) {
+ .is-touch .col-1 .jl-item img { width: 64px; }
+ .is-touch .col-2 .jl-item img { width: 55px; }
+ .is-touch .col-3 .jl-item img { width: 66px; }
+ .is-touch .col-4 .jl-item img { width: 65px; }
+ .is-touch .col-5 .jl-item img { width: 59px; }
  .is-touch .jl-item.landscape img {
-  width: 180px;  
+  width: 109px;  
 }
 }
 
-/* ========================================
-   iPad 11（縦・819px〜1180px あたり）
-   ======================================== */
-@media (min-width: 819px) and (max-width: 1022px) and (orientation: portrait) {
-  .is-touch .col-1 .jl-item img { width: 150px; }
-  .is-touch .col-2 .jl-item img { width: 140px; }
-  .is-touch .col-3 .jl-item img { width: 130px; }
-  .is-touch .col-4 .jl-item img { width: 139px; }
-  .is-touch .col-5 .jl-item img { width: 120px; }
 
-  .is-touch .jl-item.landscape img {
-  width: 200px;  
-}
-}
-
-/* ========================================
-   iPad 13（縦・819px〜1180px あたり）
-   ======================================== */
-@media (min-width: 1023px) and (max-width: 1366px) and (orientation: portrait) {
-  .is-touch .col-1 .jl-item img { width: 180px; }
-  .is-touch .col-2 .jl-item img { width: 160px; }
-  .is-touch .col-3 .jl-item img { width: 160px; }
-  .is-touch .col-4 .jl-item img { width: 160px; }
-  .is-touch .col-5 .jl-item img { width: 140px; }
-
-  .is-touch .jl-item.landscape img {
-  width: 250px;  
-}
+/* ================= iphone landscape =======================
+普通 iPhone（374〜414px） */
+/* Plus / Pro Max（415〜460px） */
+/* ★ここにスマホ横 MQ を追加 
+======================================== */
+@media (max-width: 956px) and (orientation: landscape) {
+ .is-touch .page {
+    display: flex;
+    justify-content: center;
+  }
+ .is-touch .thumbs {
+    margin: 20px auto 0;
+  }
 }
 
 
 /* ========================================
-   iPad mini（ランドスケープ）
+   iPad 全体（縦） mini / 11 / 13 共通
    ======================================== */
-@media (min-width: 1132px) and (max-width: 1178px) and (orientation: landscape) {
+@media (min-width: 742px) and (max-width: 1366px) and (orientation: portrait) {
 
-    /* ここを追加：メイン領域をフレックスで横中央寄せ */
   .is-touch .page {
     display: flex;
-    justify-content: center;  /* 子要素を水平方向に中央寄せ */
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
   }
 
-  /* .thumbs は“塊”として中央に置きたいだけなので margin は 0 でOK */
   .is-touch .thumbs {
-    margin: 40px auto 0;      /* 上に少し余白＋左右中央 */
-  }
-  .is-touch .col-1 .jl-item img { width: 90px; }
-  .is-touch .col-2 .jl-item img { width: 80px; }
-  .is-touch .col-3 .jl-item img { width: 80px; }
-  .is-touch .col-4 .jl-item img { width: 70px; }
-  .is-touch .col-5 .jl-item img { width: 70px; }
-
-  .is-touch .jl-item.landscape img {
-  width: 150px;  
-}
-}
-
-/* ========================================
-   iPad 11（ランドスケープ）
-   ======================================== */
-@media (min-width: 1179px) and (max-width: 1364px) and (orientation: landscape) {
-
-    /* ここを追加：メイン領域をフレックスで横中央寄せ */
-  .is-touch .page {
-    display: flex;
-    justify-content: center;  /* 子要素を水平方向に中央寄せ */
+    margin: 20px auto 0;
   }
 
-  /* .thumbs は“塊”として中央に置きたいだけなので margin は 0 でOK */
-  .is-touch .thumbs {
-    margin: 40px auto 0;      /* 上に少し余白＋左右中央 */
-  }
   .is-touch .col-1 .jl-item img { width: 100px; }
   .is-touch .col-2 .jl-item img { width: 90px; }
   .is-touch .col-3 .jl-item img { width: 90px; }
   .is-touch .col-4 .jl-item img { width: 80px; }
   .is-touch .col-5 .jl-item img { width: 80px; }
+  .is-touch .col-6 .jl-item img { width: 70px; }
 
   .is-touch .jl-item.landscape img {
-  width: 160px;  
-}
+    width: 160px;
+  }
 }
 
 /* ========================================
-   iPad 13（ランドスケープ）
+   iPad 全体（横） mini / 11 / 13 共通
    ======================================== */
-@media (min-width: 1365px) and (max-width: 1800px) and (orientation: landscape) {
+@media (min-width: 1132px) and (max-width: 1800px) and (orientation: landscape) {
 
-    /* ここを追加：メイン領域をフレックスで横中央寄せ */
   .is-touch .page {
     display: flex;
-    justify-content: center;  /* 子要素を水平方向に中央寄せ */
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
   }
 
-  /* .thumbs は“塊”として中央に置きたいだけなので margin は 0 でOK */
   .is-touch .thumbs {
-    margin: 40px auto 0;      /* 上に少し余白＋左右中央 */
+    margin: 20px auto 0;
   }
-  .is-touch .col-1 .jl-item img { width: 120px; }
-  .is-touch .col-2 .jl-item img { width: 110px; }
-  .is-touch .col-3 .jl-item img { width: 110px; }
-  .is-touch .col-4 .jl-item img { width: 100px; }
-  .is-touch .col-5 .jl-item img { width: 100px; }
+
+  .is-touch .col-1 .jl-item img { width: 100px; }
+  .is-touch .col-2 .jl-item img { width: 90px; }
+  .is-touch .col-3 .jl-item img { width: 90px; }
+  .is-touch .col-4 .jl-item img { width: 80px; }
+  .is-touch .col-5 .jl-item img { width: 80px; }
+  .is-touch .col-6 .jl-item img { width: 70px; }
 
   .is-touch .jl-item.landscape img {
-  width: 200px;  
+    width: 160px;
+  }
 }
-}
+
+
 
 /* ========================================
    Desktop（PCブラウザ専用）
    ======================================== */
-
-/* 1) 狭め PC（575px〜1023px） */
-@media (min-width: 573px) and (max-width: 1023px) and (pointer: fine) {
+/* Desktop（PCブラウザ専用：横幅480px以上・ポインタfine） */
+@media (min-width: 480px) and (pointer: fine) {
   .is-desktop .page {
     display: flex;
-    justify-content: center; /* 横中央寄せ */
+    flex-direction: column;
+    justify-content: center;   /* 縦方向中央 */
+    align-items: center;       /* 横方向中央 */
+    min-height: 100vh;
   }
 
   .is-desktop .thumbs {
     margin: 0 auto; /* 中央配置 */
   }
 
-  .is-desktop .col-1 .jl-item img { width: 90px; }
+  .is-desktop .col-1 .jl-item img { width: 88px; }
   .is-desktop .col-2 .jl-item img { width: 80px; }
   .is-desktop .col-3 .jl-item img { width: 80px; }
-  .is-desktop .col-4 .jl-item img { width: 70px; }
+  .is-desktop .col-4 .jl-item img { width: 76px; }
   .is-desktop .col-5 .jl-item img { width: 70px; }
+  .is-desktop .col-6 .jl-item img { width: 70px; }
 
   .is-desktop .jl-item.landscape img {
-    width: 120px;
+    width: 150px;
   }
-
-  .is-desktop .page {
-   display: flex;
-    flex-direction: column;
-    justify-content: center;   /* 縦方向中央 */
-    align-items: center;       /* 横方向中央 */
-    min-height: 100vh;
-}
 }
 
-/* 2) ふつう PC（1024px〜1299px） */
-@media (min-width: 1024px) and (max-width: 1299px) and (pointer: fine) {
-   .is-desktop .page {
-    display: flex;
-    justify-content: center; /* 横中央寄せ */
-  }
-
-  .is-desktop .thumbs {
-    margin: 0 auto; /* 中央配置 */
-  }
-
-  .is-desktop .col-1 .jl-item img { width: 90px; }
-  .is-desktop .col-2 .jl-item img { width: 80px; }
-  .is-desktop .col-3 .jl-item img { width: 80px; }
-  .is-desktop .col-4 .jl-item img { width: 70px; }
-  .is-desktop .col-5 .jl-item img { width: 70px; }
-
-  .is-desktop .jl-item.landscape img {
-    width: 120px;
-  }
-
-  .is-desktop .page {
-   display: flex;
-    flex-direction: column;
-    justify-content: center;   /* 縦方向中央 */
-    align-items: center;       /* 横方向中央 */
-    min-height: 100vh;
-}
-}
-
-/* 4) 大画面 PC（1600px〜） */
-@media (min-width: 1600px) and (pointer: fine) {
-   .is-desktop .page {
-    display: flex;
-    justify-content: center; /* 横中央寄せ */
-  }
-
-  .is-desktop .thumbs {
-    margin: 0 auto; /* 中央配置 */
-  }
-
-  .is-desktop .col-1 .jl-item img { width: 90px; }
-  .is-desktop .col-2 .jl-item img { width: 80px; }
-  .is-desktop .col-3 .jl-item img { width: 80px; }
-  .is-desktop .col-4 .jl-item img { width: 70px; }
-  .is-desktop .col-5 .jl-item img { width: 70px; }
-
-  .is-desktop .jl-item.landscape img {
-    width: 120px;
-  }
-
-  .is-desktop .page {
-   display: flex;
-    flex-direction: column;
-    justify-content: center;   /* 縦方向中央 */
-    align-items: center;       /* 横方向中央 */
-    min-height: 100vh;
-}
-}
 
 
 
@@ -657,12 +516,7 @@ pointer-events: auto;
   /* ← この外側のボックスが実際のクリック領域 */
 }
 
-/* iPhone などでもガイドラインに近い 44px 以上を確保したい場合 */
-@media (max-width: 480px) {
-  .gm-close {
-    padding: 20px 32px;   /* スマホ時はさらにヒットエリア広め */
-  }
-}
+
 
 /* click zones */
 .gm-hit {
@@ -713,3 +567,4 @@ button,
 .jl-item img {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
