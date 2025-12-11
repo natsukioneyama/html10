@@ -1,5 +1,4 @@
 // top.js
-  // top.js の先頭あたり
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.documentElement;
 
@@ -23,16 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* CONTACT は mailto だけ */
+  /* CONTACT は mailto だけ（特別な処理無し） */
   const contactLink = document.querySelector('.js-contact');
   if (contactLink) {
     contactLink.addEventListener('click', () => {
-      // mailto なので特別な処理は不要
+      // mailto リンクなので何もしない
     });
   }
-
-
-
 
   /* ===== LIGHTBOX (gm) ===== */
   const gm       = document.getElementById('gm');
@@ -45,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnNext  = gm ? gm.querySelector('.gm-next') : null;
   const backdrop = gm ? gm.querySelector('.gm-backdrop') : null;
 
-   const thumbImgs = Array.from(
+  const thumbImgs = Array.from(
     document.querySelectorAll('.thumbs .jl-item img')
   );
 
@@ -56,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // gm / 画像 / サムネがなければ何もしない
   if (!gm || !gmImg || !thumbImgs.length) return;
-
 
   const items = thumbImgs.map((img) => ({
     thumbEl: img,
@@ -76,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let touchStartY = 0;
   let isTouching  = false;
 
+  // ★ iPhone / iPod のみタップ fw/rv を無効化（iPad は PC と同じ扱い）
   const isIPhone = /iPhone|iPod/.test(navigator.userAgent || '');
 
   // ★ プリロード用キャッシュ（同じ画像を何度も読み込まないように）
@@ -105,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     preloadCache.set(src, p);
   }
 
-      async function updateSlide(index) {
+  async function updateSlide(index) {
     const item = items[index];
     if (!item) return;
 
@@ -161,7 +157,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-
   function openLightbox(index) {
     currentIndex = index;
     gmIsOpen = true;
@@ -185,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateSlide(currentIndex);
   }
 
-  // サムネクリックでオープン
+  // サムネクリックでオープン（iPhone 含め全端末で有効）
   thumbImgs.forEach((img, idx) => {
     img.addEventListener('click', () => {
       openLightbox(idx);
@@ -220,12 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 前後ボタン（iPhone ではタップで次へ・前へを無効化）
-if (btnPrev && !isIPhone) {
-  btnPrev.addEventListener('click', () => showNext(-1));
-}
-if (btnNext && !isIPhone) {
-  btnNext.addEventListener('click', () => showNext(1));
-}
+  if (btnPrev && !isIPhone) {
+    btnPrev.addEventListener('click', () => showNext(-1));
+  }
+  if (btnNext && !isIPhone) {
+    btnNext.addEventListener('click', () => showNext(1));
+  }
 
   // ★★ iPhone / タッチ端末用：スワイプで前後 ★★
   gm.addEventListener('touchstart', (e) => {
@@ -259,7 +254,7 @@ if (btnNext && !isIPhone) {
     }
   }, { passive: true });
 
-  // キーボード
+  // キーボード操作（PC 向け）
   window.addEventListener('keydown', (e) => {
     if (!gmIsOpen) return;
 
@@ -271,5 +266,4 @@ if (btnNext && !isIPhone) {
       showNext(-1);
     }
   });
-
- });
+});

@@ -9,12 +9,12 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background: #F7F7F5;
   -webkit-tap-highlight-color: transparent; 
 }
 
 :root {
   --bar-h: 44px;
-  /* 440px をベース幅として、画面が狭いときだけ縮小する係数 */
   --thumbs-scale: min(1, 100vw / 440);
 }
 
@@ -22,10 +22,8 @@ body {
 body {
   font-family: "roboto-mono", monospace;
   color: #111;
-  background: #F7F7F5;
   overflow-x: hidden;
 }
-
 
 
 
@@ -541,13 +539,6 @@ body.gm-open {
   overscroll-behavior: contain;
 }
 
-
-/* ===== iOS の黒チラつき・タップハイライト対策 ===== */
-html,
-body {
-  background: #F7F7F5;
-  -webkit-tap-highlight-color: transparent; /* タップ時の黒/グレーのフラッシュを消す */
-}
 
 /* Lightbox まわりは全部 同じ背景色で塗りつぶす */
 .gm,
